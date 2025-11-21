@@ -1,0 +1,59 @@
+table dev_hardware_sales_data
+	lineageTag: 154bf6c6-fcf1-41ac-8607-aba9657ddb1b
+	sourceLineageTag: [dbo].[dev_hardware_sales_data]
+
+	column Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: cddcca72-e94a-47e3-81d2-7ba567f03a32
+		sourceLineageTag: Date
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 0952bf34-a678-47b6-8a5b-0078dde9e429
+		sourceLineageTag: Category
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product
+		dataType: string
+		lineageTag: c284abd8-2744-43f4-9ba6-83230c37fee1
+		sourceLineageTag: Product
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 9203c6fe-1889-438b-adad-beed1a176028
+		sourceLineageTag: Quantity
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total
+		dataType: double
+		lineageTag: d084e2a9-a7f9-4379-bafd-990f23ce3fab
+		sourceLineageTag: Total
+		summarizeBy: sum
+		sourceColumn: Total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dev_hardware_sales_data = entity
+		mode: directLake
+		source
+			entityName: dev_hardware_sales_data
+			expressionSource: 'DirectLake - lh_testecollab'
+
